@@ -1,0 +1,35 @@
+`timescale 1ns / 1ps
+
+
+module RCA_tb;
+
+	
+	reg [3:0] a;
+	reg [3:0] b;
+	reg cin;	wire [3:0] s;
+	wire co;
+
+	
+	RCA uut (
+		.a(a), 
+		.b(b), 
+		.cin(cin), 
+		.s(s), 
+		.co(co)
+	);
+
+	initial begin
+		
+		assign cin = 0;
+		a = 4'b0000;b = 4'b0000;#100;
+		a = 4'b0001;b = 4'b0000;#100;
+      a = 4'b0000;b = 4'b0001;#100;
+		a = 4'b0000;b = 4'b1000;#100;
+a = 4'b1000;b = 4'b0000;#100;		
+a = 4'b1111;b = 4'b0000;#100;
+a = 4'b1111;b = 4'b1111;#100;
+
+	end
+      
+endmodule
+
